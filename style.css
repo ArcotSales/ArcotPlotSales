@@ -1,0 +1,787 @@
+/* ==========================================================================
+   CSS VARIABLES & THEME SYSTEM
+   ========================================================================== */
+:root {
+  --primary: #0b1c3c;        /* Deep Premium Navy */
+  --primary-light: #162a54;  /* Navy Light */
+  --accent: #d4af37;         /* Real Estate Gold */
+  --accent-hover: #bda030;   /* Gold Hover */
+  --whatsapp-green: #25d366; /* Official WhatsApp Green */
+  --whatsapp-dark: #128c7e;  /* Dark WhatsApp Green */
+  --call-blue: #007bff;      /* Call Button Blue */
+  --call-dark: #0056b3;
+  --bg-light: #f8fafc;       /* Light slate background */
+  --bg-card: #ffffff;        /* White card background */
+  --text-dark: #1e293b;      /* Slate-800 text */
+  --text-muted: #64748b;     /* Slate-500 text */
+  --border-color: #e2e8f0;   /* Light gray borders */
+  --font-main: 'Outfit', sans-serif;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 16px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(11, 28, 60, 0.1), 0 8px 10px -6px rgba(11, 28, 60, 0.1);
+}
+
+/* ==========================================================================
+   BASE & RESET STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding-bottom: 80px; /* Space for floating buttons */
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container alignment */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background-color: var(--whatsapp-green);
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--whatsapp-dark);
+  transform: translateY(-2px);
+}
+
+.btn-call {
+  background-color: var(--call-blue);
+  color: white;
+}
+
+.btn-call:hover {
+  background-color: var(--call-dark);
+  transform: translateY(-2px);
+}
+
+/* Language badges */
+.lang-badge {
+  font-size: 0.75rem;
+  background: var(--primary-light);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+header {
+  background-color: rgba(11, 28, 60, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+  border-bottom: 2px solid var(--accent);
+}
+
+header .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  flex-direction: column;
+}
+
+header .logo h1 {
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+header .logo span {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: -2px;
+}
+
+header .contact-top {
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header .contact-top a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition);
+}
+
+header .contact-top a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header .contact-top {
+    display: none; /* Hide top contact on mobile, floating buttons handle it */
+  }
+}
+
+/* ==========================================================================
+   HERO BANNER
+   ========================================================================== */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background decorative pattern */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h2 {
+  color: var(--accent);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.25;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+/* ==========================================================================
+   SECTION CONTAINER
+   ========================================================================== */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+.section-title p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.main-section {
+  padding: 60px 0;
+}
+
+/* ==========================================================================
+   PROPERTY CATEGORIES & CARDS
+   ========================================================================== */
+.tabs-container {
+  margin-bottom: 30px;
+}
+
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab-btn.active {
+  background-color: var(--primary);
+  color: var(--accent);
+  border-color: var(--primary);
+}
+
+/* Property Grid */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 680px) {
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Property Card Layout */
+.property-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card visual header (replaces raw images beautifully) */
+.card-visual-header {
+  height: 180px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-visual-header i {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.card-visual-header .placeholder-txt {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  border: 1px dashed rgba(255,255,255,0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+/* Badge on visual header */
+.card-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: var(--accent);
+  color: var(--primary);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 20px;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-price {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: var(--primary);
+  color: var(--accent);
+  padding: 6px 14px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Card Content */
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.card-title-ta {
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.detail-item i {
+  color: var(--accent);
+  width: 16px;
+  text-align: center;
+}
+
+.card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.card-actions .btn {
+  padding: 10px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   CONTACT FORM SECTION
+   ========================================================================== */
+.contact-section {
+  background-color: var(--primary);
+  color: white;
+  padding: 60px 0;
+  position: relative;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.05) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+.contact-section h2 {
+  color: var(--accent);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info-block {
+  background-color: var(--primary-light);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--accent);
+  height: 100%;
+}
+
+.contact-info-block h3 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.contact-method i {
+  background-color: rgba(212, 175, 55, 0.1);
+  color: var(--accent);
+  font-size: 1.2rem;
+  padding: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.contact-method div h4 {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 3px;
+}
+
+.contact-method div p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Contact Form Styles */
+.contact-form-container {
+  background-color: var(--bg-card);
+  padding: 40px 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-dark);
+}
+
+.contact-form-container h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.contact-form-container p {
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(11, 28, 60, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   FLOATING ACTIONS BUTTONS (Only 2)
+   ========================================================================== */
+.floating-ctas {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  pointer-events: none; /* Allows clicks to pass through empty space */
+}
+
+.floating-ctas-inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.floating-btn {
+  pointer-events: auto; /* Re-enable clicks for the buttons */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 1.6rem;
+  transition: var(--transition);
+  animation: pulse 2s infinite;
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Left-side Call Button */
+.floating-btn.call-float {
+  background-color: var(--call-blue);
+}
+
+.floating-btn.call-float:hover {
+  background-color: var(--call-dark);
+}
+
+/* Right-side WhatsApp Button */
+.floating-btn.whatsapp-float {
+  background-color: var(--whatsapp-green);
+}
+
+.floating-btn.whatsapp-float:hover {
+  background-color: var(--whatsapp-dark);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+.floating-btn.whatsapp-float {
+  animation: pulse-wa 2s infinite;
+}
+
+@keyframes pulse-wa {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* ==========================================================================
+   ABOUT & SERVICES SECTION
+   ========================================================================== */
+.about-section {
+  background-color: var(--bg-card);
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background-color: var(--bg-light);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.service-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.service-card i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  background-color: #050d1e;
+  color: #94a3b8;
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+footer .copyright {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: white;
+}
